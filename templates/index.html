@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+{% block body %}
+<div class = "content">
+    <h1>Comix Match</h1>
+    <form action='/redirect' method='post'>
+        <select id="category" name="category" onchange='{ this.form.submit(); }'>
+            <option value="" disabled selected>category</option>
+            <option value="comicPage">comics</option>
+            <option value="home">comics, graphic novels, manga&#x200E;</option>
+            <option value="home">manga</option>
+            <option value="home">chicklit</option>
+        </select>
+    </form>
+    <br>
+    <form action={{ loc }} method='post'>
+        <select id="sortBy" name="sortBy" onchange='{ this.form.submit(); }'>
+            <option value="" disabled selected>sort by</option>
+            <option value="average(highest)">average(highest)&#x200E;</option>
+            <option value="average(lowest)">average(lowest)&#x200E;</option>
+            <option value="total reviews">total reviews</option>
+            <option value="goodreads default">goodreads default</option>
+            <option value="random">random</option>
+        </select>
+    </form>
+    <table align="center">
+        <tr>
+            <th>    </th>
+            <th></th>
+            <th class = "titleOG">Title</th>
+            <th>Average</th>
+            <th>Total Reviews</th>
+            <th>Published</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <th> {{ book[0] }} </th>
+            <td> <img src={{ book[6] }} alt={{ book[0] }}></td>
+            <td  class = "title"><a href={{ book[7] }} target="_blank">{{ book[2] }}</a></td>
+            <td> {{ book[3] }} </td>
+            <td> {{ book[4] }} </td>
+            <td> {{ book[5] }} </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
