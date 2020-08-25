@@ -25,12 +25,14 @@ def super_page(request, file, loc):
 
 @app.route("/", methods=['GET', 'POST', 'PUT'])
 def home():
-    return super_page(request, sys.path[0] + '/data/comics.xlsx', "/")
+    # return super_page(request, sys.path[0] + '/data/comics.xlsx', "/")
+    return super_page(request, 'data/comics.xlsx', "/")
 
 
 @app.route("/comics", methods=['GET', 'POST', 'PUT'])
 def comicPage():
-    return super_page(request, sys.path[0] + '/data/comics.xlsx', "/comics")
+    # return super_page(request, sys.path[0] + '/data/comics.xlsx', "/comics")
+    return super_page(request, 'data/comics.xlsx', "/")
 
 
 @app.route("/redirect", methods = ['POST'])

@@ -44,7 +44,7 @@ def genre_find(url_name, excel_name):
 
 
     def page_sequence(url: str, page_num: int, book_list: list, i: int):
-        if page_num < 2:
+        if page_num < 25:
             driver.get(url)
             books = driver.find_elements_by_class_name('elementList')
 
@@ -92,7 +92,7 @@ def genre_find(url_name, excel_name):
     page_sequence(url_name, 0, book_list, 0)
     driver.quit()
     book_list = list(set(book_list))
-    book_list.sort(reverse = True, key = lambda x : x.i)
+    book_list.sort(reverse = False, key = lambda x : x.i)
     dict = {"i": map(lambda x: x.i, book_list),
             "title": map(lambda x: x.title, book_list),
             "avg review": map(lambda x: x.avg, book_list),
@@ -105,4 +105,4 @@ def genre_find(url_name, excel_name):
 
     brics = pd.DataFrame(dict)
     brics.index = np.arange(1, len(brics) + 1)
-    brics.to_excel(sys.path[3] + '/data/' + excel_name + '.xlsx', index=False, engine='xlsxwriter')
+    brics.to_excel('/Users/ashleychang/PycharmProjects/BBPlus/goodreads/directoryWebsite/data/' + excel_name + '.xlsx', index=False, engine='xlsxwriter')
