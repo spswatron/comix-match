@@ -24,12 +24,12 @@ def super_page(request, file, loc):
 
 @app.route("/", methods=['GET', 'POST', 'PUT'])
 def home():
-    return super_page(request, '/Users/ashleychang/Documents/CSInstalls/goodreadsAnalysis/comics.xlsx', "/")
+    return super_page(request, '/Users/ashleychang/PycharmProjects/BBPlus/goodreads/directoryWebsite/data/comics.xlsx', "/")
 
 
 @app.route("/comics", methods=['GET', 'POST', 'PUT'])
 def comicPage():
-    return super_page(request, '/Users/ashleychang/Documents/CSInstalls/goodreadsAnalysis/comics.xlsx', "/comics")
+    return super_page(request, '/Users/ashleychang/PycharmProjects/BBPlus/goodreads/directoryWebsite/data/comics.xlsx', "/comics")
 
 
 @app.route("/redirect", methods = ['POST'])
