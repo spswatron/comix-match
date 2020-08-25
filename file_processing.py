@@ -28,9 +28,6 @@ def tupleFeeder(file, selected):
     if selected == "random":
         return dataFramer(file, lambda x: x['title'], True, True)
 
-x= tupleFeeder("/Users/ashleychang/Documents/CSInstalls/goodreadsAnalysis/comics.xlsx", 'random')
-y = 0
-
 # class book_list(db.Model):
 #     rank = db.Column(db.Integer, primary_key=True)
 #     title = db.Column(db.String, nullable=False)
