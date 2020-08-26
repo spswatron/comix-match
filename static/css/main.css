@@ -36,14 +36,16 @@ h1 {
     padding-bottom: 0.3%
 }
 
+.updateDate{
+    margin-top: 0.1%;
+}
+
 h4 {
     font-weight: normal;
-    text-align: right;
-    display: inline;
-    margin-bottom: 0.2%;
-    padding-bottom: 0.1%;
+    text-align: center;
     float: right;
     clear: both;
+    margin: 1%;
 }
 
 form {

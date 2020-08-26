@@ -5,7 +5,7 @@
 {% endblock %}
 {% block body %}
 <div class = "content">
-    <h1><a href = {{ shelf }}>{{ name }} Match</a></h1>
+    <h1><a href = {{ shelf }} target="_blank">{{ name }} Match</a></h1>
     <form action="/redirect/{{ style }}" method='post'>
         <select id="category" name="category" onchange='{ this.form.submit(); }'>
             <option value="" disabled selected>{{ choice[1] }}&#x200E;</option>
@@ -46,7 +46,7 @@
         {% endfor %}
     </table>
 </div>
-    <h4>last_updated: {{ time }}</h4>
+    <h4 class ="updateDate">last updated: {{ time }}</h4>
     <br>
-    <h4><a href = {{ shelf }}>original goodreads shelf:</a></h4>
+    <h4><a href = {{ shelf }} target="_blank">original goodreads shelf</a></h4>
 {% endblock %}

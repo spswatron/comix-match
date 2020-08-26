@@ -2,7 +2,8 @@ from flask import *
 from flask_bootstrap import Bootstrap
 from file_processing import *
 import os
-import platform
+from time import gmtime
+import datetime as dt
 import locale
 
 locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
@@ -21,7 +22,8 @@ def fixed(lister, op):
     return filter(lambda x: x != op, lister)
 
 def super_page(request, file, loc, cat, choice, name, fav, shelf, rank = "average(highest)"):
-    last_update = format(os.stat(file).st_mtime)
+    last_update = dt.datetime.fromtimestamp(os.path.getmtime(file))
+    last_update = last_update.strftime("%m/%d/%Y")
     if request.method == 'POST':
         helper = request.form['sortBy']
         new_list = fixed(sorting, helper)
