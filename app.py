@@ -5,7 +5,7 @@ import locale
 
 locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
-comix_app = Flask(__name__)
+app = Flask(__name__)
 app.config.from_mapping(
     SECRET_KEY='yo')
 Bootstrap(app)
@@ -58,4 +58,4 @@ def page_not_found(error):
     return render_template('page_not_found.html'), 404
 
 if __name__ == "__main__":
-    comix_app.run(debug=True)
+    app.run(debug=True)
