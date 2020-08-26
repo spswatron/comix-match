@@ -1,8 +1,6 @@
 from flask import *
 from flask_bootstrap import Bootstrap
 from file_processing import *
-from pprint import pprint
-import sys
 import locale
 
 locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
@@ -36,7 +34,6 @@ def home(rank="average(highest)"):
 @app.route("/manga", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
 @app.route("/manga/<rank>", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
 def manga(rank="average(highest)"):
-    print(rank)
     option = ('manga', 'manga')
     return super_page(request, 'data/manga.xlsx', "/manga", filter(lambda x: x != option, categories), option, rank)
 
@@ -49,13 +46,11 @@ def chicklit(rank="average(highest)"):
 @app.route("/comics-graphic-novels-manga", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
 @app.route("/comics-graphic-novels-manga/<rank>", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
 def CGN(rank="average(highest)"):
-    print(rank)
     option = ('CGN', 'comics, graphic novels, manga')
     return super_page(request, 'data/CGN.xlsx', "/comics-graphic-novels-manga", filter(lambda x: x != option, categories), option, rank)
 
 @app.route("/redirect/<rank>", strict_slashes=False, methods = ['POST'])
 def next(rank):
-    print(rank)
     return redirect(url_for(request.form['category'], rank = rank))
 
 @app.errorhandler(404)
