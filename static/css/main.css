@@ -30,6 +30,7 @@ th.titleOG{
 
 
 h1 {
+    clear: both;
     text-align: center;
     margin: 0 auto;
     padding-top: 0.3%;
@@ -42,10 +43,10 @@ h1 {
 
 h4 {
     font-weight: normal;
-    text-align: center;
+    text-align: right;
     float: right;
     clear: both;
-    margin: 1%;
+    margin: 0;
 }
 
 form {
@@ -80,6 +81,7 @@ select {
 
 option {
     direction: rtl;
+    text-align: right;
 }
 
 table {
@@ -97,5 +99,5 @@ a {
 
 img {
     border-image-repeat: stretch;
-    border-image-slice: 120%;
+    border-image-slice: 150%;
 }
