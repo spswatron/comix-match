@@ -1,1 +1,2 @@
-gunicorn app:app.server -b localhost:8000
+web: gunicorn app:app
+web: gunicorn run:comix_app
