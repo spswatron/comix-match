@@ -16,6 +16,11 @@ th.title{
     vertical-align: top;
     max-width: 30%;
     word-wrap: break-word;
+    margin-right: 0.3%
+}
+
+th {
+    padding-right: 1%;
 }
 
 .headers{
@@ -77,6 +82,7 @@ select {
     user-select: none;
     box-sizing: content-box;
     clear: both;
+    width: 77px;
 }
 
 option {
