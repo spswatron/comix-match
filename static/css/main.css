@@ -4,12 +4,18 @@ body, html {
     margin: 0 auto;
     padding: 0.5%;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
 }
 
 th.title{
     padding-left: 0.8%;
     text-align: left;
     vertical-align: top;
+    max-width: 30%;
+    word-wrap: break-word;
 }
 
 .headers{
@@ -25,16 +31,22 @@ th.titleOG{
 
 h1 {
     text-align: center;
+    margin: 0 auto;
+    padding-top: 0.3%;
+    padding-bottom: 0.3%
 }
 
 h4 {
     font-weight: normal;
-    text-align: left;
-    padding-bottom: 0;
+    text-align: right;
+    display: inline;
+    margin-bottom: 0.2%;
+    padding-bottom: 0.1%;
+    float: right;
+    clear: both;
 }
 
 form {
-    overflow: hidden;
     float: right;
     padding-top: 0;
     padding-bottom: 0.4%;
@@ -61,7 +73,7 @@ select {
     -ms-user-select: none;
     user-select: none;
     box-sizing: content-box;
-    width: 100 px
+    clear: both;
 }
 
 option {
@@ -72,6 +84,10 @@ table {
     clear: both;
 }
 
+td {
+    word-wrap: break-word;
+}
+
 a {
   color: inherit;
   text-decoration: inherit;
@@ -79,5 +95,5 @@ a {
 
 img {
     border-image-repeat: stretch;
-    border-image-slice: 100%;
+    border-image-slice: 120%;
 }
