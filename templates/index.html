@@ -4,30 +4,29 @@
 {% endblock %}
 {% block body %}
 <div class = "content">
-    <h1>Comix Match</h1>
-    <form action='/redirect' method='post'>
+    <h1><a href = '/'>Comix Match</a></h1>
+    <form action="/redirect/{{ style }}" method='post'>
         <select id="category" name="category" onchange='{ this.form.submit(); }'>
+            <option value="" disabled selected>{{ choice[1] }}&#x200E;</option>
             <option value="" disabled selected>category</option>
-            <option value="comicPage">comics</option>
-            <option value="home">comics, graphic novels, manga&#x200E;</option>
-            <option value="home">manga</option>
-            <option value="home">chicklit</option>
+            {% for cat in categories %}
+            <option value="{{ cat[0] }}">{{ cat[1] }}&#x200E;</option>
+            {% endfor %}
         </select>
     </form>
     <br>
     <form action={{ loc }} method='post'>
         <select id="sortBy" name="sortBy" onchange='{ this.form.submit(); }'>
+            <option value="" disabled selected>{{ style }}&#x200E;</option>
             <option value="" disabled selected>sort by</option>
-            <option value="average(highest)">average(highest)&#x200E;</option>
-            <option value="average(lowest)">average(lowest)&#x200E;</option>
-            <option value="total reviews">total reviews</option>
-            <option value="goodreads default">goodreads default</option>
-            <option value="random">random</option>
+            {% for option in sort %}
+            <option value="{{ option }}">{{ option }}&#x200E;</option>
+            {% endfor %}
         </select>
     </form>
     <table align="center">
-        <tr>
-            <th>    </th>
+        <tr class ="headers">
+            <th></th>
             <th></th>
             <th class = "titleOG">Title</th>
             <th>Average</th>

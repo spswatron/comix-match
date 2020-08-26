@@ -1,44 +1,62 @@
 from flask import *
 from flask_bootstrap import Bootstrap
-from flask_sqlalchemy import SQLAlchemy
 from file_processing import *
+from pprint import pprint
 import sys
 import locale
 
 locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ysuixeryqefywk:dab2fb532443ee29056d25b0a2c19455001a7bccc24fbec706ed68565c979e7e@ec2-34-200-15-192.compute-1.amazonaws.com:5432/d67qv5uuekkqlp'
-
-db = SQLAlchemy(app)
 app.config.from_mapping(
     SECRET_KEY='yo')
 Bootstrap(app)
 
-def super_page(request, file, loc):
+
+categories = [('home', 'comics'), ('CGN', 'comics, graphic novels, manga'), ('manga', 'manga'), ('chicklit', 'chicklit')]
+sorting = ['average(highest)', 'average(lowest)', 'total reviews', 'goodreads default', 'random']
+option = ('comicPage', 'comics')
+def fixed(lister, op):
+    return filter(lambda x: x != op, lister)
+
+def super_page(request, file, loc, cat, choice, rank = "average(highest)"):
     if request.method == 'POST':
-        return render_template('index.html', books=tupleFeeder(file, request.form['sortBy']), loc=loc)
-    return render_template('index.html', books=dataFramer(file, None, None, None), loc = loc)
+        helper = request.form['sortBy']
+        new_list = fixed(sorting, helper)
+        return render_template('index.html', books=tupleFeeder(file, helper), loc=loc, categories=cat, choice=choice, sort=new_list, style=helper)
+    else:
+        return render_template('index.html', books=tupleFeeder(file, rank), loc = loc, categories=cat, choice=choice, sort=fixed(sorting, rank), style=rank)
 
-# xyz = super_page(None, '/Users/ashleychang/Documents/CSInstalls/goodreadsAnalysis/comics.xlsx', '/')
-# yhl = 0
+@app.route("/", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
+@app.route("/<rank>", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
+def home(rank="average(highest)"):
+    option = ('home', 'comics')
+    return super_page(request, 'data/comics.xlsx', "/", filter(lambda x: x != option, categories), option, rank)
 
-@app.route("/", methods=['GET', 'POST', 'PUT'])
-def home():
-    # return super_page(request, sys.path[0] + '/data/comics.xlsx', "/")
-    return super_page(request, 'data/comics.xlsx', "/")
+@app.route("/manga", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
+@app.route("/manga/<rank>", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
+def manga(rank="average(highest)"):
+    print(rank)
+    option = ('manga', 'manga')
+    return super_page(request, 'data/manga.xlsx', "/manga", filter(lambda x: x != option, categories), option, rank)
 
+@app.route("/chicklit", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
+@app.route("/chicklit/<rank>", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
+def chicklit(rank="average(highest)"):
+    option = ('chicklit', 'chicklit')
+    return super_page(request, 'data/chicklit.xlsx', "/chicklit", filter(lambda x: x != option, categories), option, rank)
 
-@app.route("/comics", methods=['GET', 'POST', 'PUT'])
-def comicPage():
-    # return super_page(request, sys.path[0] + '/data/comics.xlsx', "/comics")
-    return super_page(request, 'data/comics.xlsx', "/")
+@app.route("/comics-graphic-novels-manga", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
+@app.route("/comics-graphic-novels-manga/<rank>", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
+def CGN(rank="average(highest)"):
+    print(rank)
+    option = ('CGN', 'comics, graphic novels, manga')
+    return super_page(request, 'data/CGN.xlsx', "/comics-graphic-novels-manga", filter(lambda x: x != option, categories), option, rank)
 
-
-@app.route("/redirect", methods = ['POST'])
-def next():
-    return redirect(url_for(request.form['category']))
-
+@app.route("/redirect/<rank>", strict_slashes=False, methods = ['POST'])
+def next(rank):
+    print(rank)
+    return redirect(url_for(request.form['category'], rank = rank))
 
 @app.errorhandler(404)
 def page_not_found(error):

@@ -12,6 +12,11 @@ th.title{
     vertical-align: top;
 }
 
+.headers{
+    margin-right: 4%;
+    font-size: 93%;
+}
+
 th.titleOG{
     padding-left: 0;
     text-align: left;
@@ -34,6 +39,10 @@ form {
     padding-top: 0;
     padding-bottom: 0.4%;
     clear: both;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 select {
@@ -44,6 +53,15 @@ select {
     border-style: none;
     margin-bottom: 0.2%;
     text-align-last: right;
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    box-sizing: content-box;
+    width: 100 px
 }
 
 option {

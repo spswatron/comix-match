@@ -27,18 +27,3 @@ def tupleFeeder(file, selected):
         return dataFramer(file, lambda x: x['i'], True, False)
     if selected == "random":
         return dataFramer(file, lambda x: x['title'], True, True)
-
-# class book_list(db.Model):
-#     rank = db.Column(db.Integer, primary_key=True)
-#     title = db.Column(db.String, nullable=False)
-#     average = db.Column(db.Integer, nullable=False)
-#     total = db.Column(db.Integer, nullable=False)
-#     published = db.Column(db.Integer, nullable=True)
-#     average = db.Column(db.Integer, nullable=False)
-#
-#     def __repr__(self):
-#         return self.id
-#
-#
-# class Form(FlaskForm):
-#     sortBy = SelectField('sort by', choices = ["average(highest)", "average(lowest)", "total reviews", "goodreads default"])
