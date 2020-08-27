@@ -21,6 +21,7 @@ def fixed(lister, op):
 
 def super_page(request, file, loc, cat, choice, name, fav, shelf, rank = "average(highest)"):
     last_update = dt.datetime.fromtimestamp(os.path.getmtime(file))
+    info_source = 'https://github.com/spswatron/files-for-comix-match/raw/master/' + file[5:]
     last_update = last_update.strftime("%m/%d/%Y")
     if request.method == 'POST':
         helper = request.form['sortBy']
@@ -28,12 +29,12 @@ def super_page(request, file, loc, cat, choice, name, fav, shelf, rank = "averag
         return render_template('index.html', books=tupleFeeder(file, helper), loc=loc,
                                categories=cat, choice=choice, sort=new_list,
                                style=helper, favicon=fav, name=name, time = last_update,
-                               shelf=shelf)
+                               shelf=shelf, file = info_source)
     else:
         return render_template('index.html', books=tupleFeeder(file, rank), loc = loc,
                                categories=cat, choice=choice, sort=fixed(sorting, rank),
                                style=rank, favicon=fav, name=name, time = last_update,
-                               shelf=shelf)
+                               shelf=shelf, file = info_source)
 
 @app.route("/", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
 @app.route("/<rank>", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
@@ -59,7 +60,7 @@ def chicklit(rank="average(highest)"):
     option = ('chicklit', 'chicklit')
     fav = "https://github.com/spswatron/files-for-comix-match/raw/master/apple-touch-icon.png"
     return super_page(request, 'data/chicklit.xlsx', "/chicklit",
-                      filter(lambda x: x != option, categories), option, 'Chicklit', fav,
+                      filter(lambda x: x != option, categories), option, 'Chix', fav,
                       "https://www.goodreads.com/shelf/show/chick-lit", rank)
 
 @app.route("/comics-graphic-novels-manga", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
@@ -109,4 +110,4 @@ def page_not_found(error):
     return render_template('page_not_found.html'), 404
 
 if __name__ == "__main__":
-    app.run(debug=True, ssl_context='adhoc')
+    app.run(debug=True)
