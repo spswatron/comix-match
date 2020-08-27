@@ -42,6 +42,10 @@ h1 {
     padding-bottom: 0.3%
 }
 
+.moveRight {
+    text-align: right;
+}
+
 .updateDate{
     margin-top: 0.1%;
 }

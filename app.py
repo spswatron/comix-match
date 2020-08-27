@@ -3,9 +3,7 @@ from flask_bootstrap import Bootstrap
 from file_processing import *
 import os
 import datetime as dt
-import locale
 
-locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
 app = Flask(__name__)
 app.config.from_mapping(
@@ -111,4 +109,4 @@ def page_not_found(error):
     return render_template('page_not_found.html'), 404
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, ssl_context='adhoc')
