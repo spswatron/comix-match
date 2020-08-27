@@ -18,7 +18,6 @@ th.title{
     vertical-align: top;
     max-width: 30%;
     word-wrap: break-word;
-    margin-right: 0.3% !important;
 }
 
 th {
@@ -60,6 +59,7 @@ h4 {
 }
 
 form {
+    position: relative;
     float: right;
     padding-top: 0;
     padding-bottom: 0.4%;
@@ -91,6 +91,7 @@ select {
     clear: both;
     text-align:end;
     text-align-last: right;
+    position: relative;
 }
 
 option {
@@ -98,6 +99,7 @@ option {
 }
 
 table {
+    position: relative;
     clear: both;
     -webkit-border-horizontal-spacing: 10px;
     table-layout: fixed
@@ -115,11 +117,12 @@ a {
 img {
     border: 10px transparent;
     border-image-repeat: stretch;
-    border-image-slice: 140%;
+    border-image-slice: 200%;
+    max-height: 50px;
 }
 
 .height{
-    height: 4em;
+    height: 60px;
 }
 
 .content{
@@ -138,4 +141,8 @@ select:focus,select:active,option:focus,option:active {
 .numbers{
     width:4em;
     padding:0;
+}
+
+.bottomPart {
+    position: relative;
 }

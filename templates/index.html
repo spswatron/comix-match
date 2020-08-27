@@ -25,7 +25,8 @@
                 {% endfor %}
             </select>
         </form>
-    <table align="center">
+        <br>
+        <table align="center">
         <tr class ="headers">
             <th></th>
             <th></th>
@@ -45,8 +46,11 @@
         </tr>
         {% endfor %}
     </table>
+<br>
 </div>
+    <div class="bottomPart">
     <h4 class ="updateDate"><a target="_blank" href={{ file }}>last updated: {{ time }}</a></h4>
     <br>
     <h4><a target="_blank" href={{ shelf }}>original goodreads shelf</a></h4>
+    </div>
 {% endblock %}
