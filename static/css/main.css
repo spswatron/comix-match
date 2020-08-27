@@ -86,7 +86,14 @@ select {
     user-select: none;
     box-sizing: content-box;
     clear: both;
-    width: 10rem;
+}
+
+select#category{
+    width:76px
+}
+
+select#sortBy{
+    width:65px
 }
 
 option {
