@@ -88,14 +88,6 @@ select {
     clear: both;
 }
 
-select#category{
-    width:76px
-}
-
-select#sortBy{
-    width:65px
-}
-
 option {
     direction: rtl;
     text-align: right;
