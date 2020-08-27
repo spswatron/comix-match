@@ -86,6 +86,7 @@ select {
     user-select: none;
     box-sizing: content-box;
     clear: both;
+    width:5.7em
 }
 
 option {
