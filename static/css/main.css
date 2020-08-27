@@ -118,11 +118,6 @@ img {
     border: 10px transparent;
     border-image-repeat: stretch;
     border-image-slice: 200%;
-    max-height: 50px;
-}
-
-.height{
-    height: 60px;
 }
 
 .content{
