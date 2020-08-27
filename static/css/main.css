@@ -113,8 +113,13 @@ a {
 }
 
 img {
+    border: 10px transparent;
     border-image-repeat: stretch;
-    border-image-slice: 150%;
+    border-image-slice: 140%;
+}
+
+.height{
+    height: 4em;
 }
 
 .content{
