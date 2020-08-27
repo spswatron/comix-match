@@ -76,7 +76,6 @@ select {
     border-radius: 0.1%;
     border-style: none;
     margin-bottom: 0.2%;
-    text-align-last: right;
     background-color: transparent;
     border-color: transparent;
     cursor: pointer;
@@ -86,12 +85,10 @@ select {
     user-select: none;
     box-sizing: content-box;
     clear: both;
-    width:5.7em
 }
 
 option {
     direction: rtl;
-    text-align: right;
 }
 
 table {
