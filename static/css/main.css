@@ -42,10 +42,6 @@ h1 {
     padding-bottom: 0.3%
 }
 
-.moveRight {
-    text-align: right;
-}
-
 .updateDate{
     margin-top: 0.1%;
 }
@@ -85,6 +81,8 @@ select {
     user-select: none;
     box-sizing: content-box;
     clear: both;
+    text-align:end;
+    text-align-last: right;
 }
 
 option {
@@ -107,4 +105,8 @@ a {
 img {
     border-image-repeat: stretch;
     border-image-slice: 150%;
+}
+
+.content{
+    width: 100%;
 }
