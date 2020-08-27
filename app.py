@@ -2,7 +2,6 @@ from flask import *
 from flask_bootstrap import Bootstrap
 from file_processing import *
 import os
-from time import gmtime
 import datetime as dt
 import locale
 
@@ -14,8 +13,9 @@ app.config.from_mapping(
 Bootstrap(app)
 
 
-categories = [('home', 'comics'), ('CGN', 'comics, graphic novels, manga'), ('manga', 'manga'),
-              ('chicklit', 'chicklit'), ('teenRomance', 'teen romance'), ('YA', 'young adult')]
+categories = [('home', 'comics'), ('chicklit', 'chicklit'), ('CGN', 'comics, graphic novels, manga'),
+              ('GN', 'graphic novels'), ('manga', 'manga'), ('teenRomance', 'teen romance'),
+              ('YA', 'young adult')]
 sorting = ['average(highest)', 'average(lowest)', 'total reviews', 'goodreads default', 'random']
 option = ('comicPage', 'comics')
 def fixed(lister, op):
@@ -91,6 +91,16 @@ def YA(rank="average(highest)"):
     return super_page(request, 'data/young-adult.xlsx', "/young-adult",
                       filter(lambda x: x != option, categories), option, 'YA', fav,
                       'https://www.goodreads.com/shelf/show/young-adult', rank)
+
+@app.route("/graphic-novels", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
+@app.route("/graphic-novels/<rank>", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
+def GN(rank="average(highest)"):
+    print(rank)
+    option = ('GN', 'graphic novels')
+    fav = "https://github.com/spswatron/files-for-comix-match/raw/master/apple-touch-icon-g.png"
+    return super_page(request, 'data/graphic-novels.xlsx', "/graphic-novels",
+                      filter(lambda x: x != option, categories), option, 'Graphics', fav,
+                      'https://www.goodreads.com/shelf/show/graphic-novels', rank)
 
 @app.route("/redirect/<rank>", strict_slashes=False, methods = ['POST'])
 def next(rank):
