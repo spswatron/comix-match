@@ -8,6 +8,8 @@ body, html {
     bottom:0;
     left:0;
     right:0;
+    text-decoration: none !important;
+
 }
 
 th.title{
@@ -16,7 +18,7 @@ th.title{
     vertical-align: top;
     max-width: 30%;
     word-wrap: break-word;
-    margin-right: 0.3%
+    margin-right: 0.3% !important;
 }
 
 th {
@@ -37,6 +39,8 @@ th.titleOG{
 h1 {
     clear: both;
     text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
     margin: 0 auto;
     padding-top: 0.3%;
     padding-bottom: 0.3%
@@ -48,6 +52,7 @@ h1 {
 
 h4 {
     font-weight: normal;
+    font-size: 1rem;
     text-align: right;
     float: right;
     clear: both;
@@ -64,7 +69,10 @@ form {
     -ms-user-select: none;
     user-select: none;
 }
-
+a:hover {
+    color: inherit;
+    text-decoration: inherit;
+}
 select {
     color: inherit;
     font: inherit;
@@ -91,6 +99,8 @@ option {
 
 table {
     clear: both;
+    -webkit-border-horizontal-spacing: 10px;
+    table-layout: fixed
 }
 
 td {
@@ -109,4 +119,18 @@ img {
 
 .content{
     width: 100%;
+}
+
+select:focus,select:active,option:focus,option:active {
+   outline: none !important;
+   box-shadow: none;
+}
+
+:after, ::before {
+    box-sizing: content-box;
+}
+
+.numbers{
+    width:4em;
+    padding:0;
 }

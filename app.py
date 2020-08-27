@@ -29,12 +29,13 @@ def super_page(request, file, loc, cat, choice, name, fav, shelf, rank = "averag
         return render_template('index.html', books=tupleFeeder(file, helper), loc=loc,
                                categories=cat, choice=choice, sort=new_list,
                                style=helper, favicon=fav, name=name, time = last_update,
-                               shelf=shelf, file = info_source)
+                               shelf=shelf, file=info_source)
     else:
+        print(shelf)
         return render_template('index.html', books=tupleFeeder(file, rank), loc = loc,
                                categories=cat, choice=choice, sort=fixed(sorting, rank),
                                style=rank, favicon=fav, name=name, time = last_update,
-                               shelf=shelf, file = info_source)
+                               shelf=shelf, file=info_source)
 
 @app.route("/", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
 @app.route("/<rank>", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
@@ -42,7 +43,7 @@ def home(rank="average(highest)"):
     option = ('home', 'comics')
     fav = "https://github.com/spswatron/files-for-comix-match/raw/master/apple-touch-icon.png"
     return super_page(request, 'data/comics.xlsx', "/",
-                      filter(lambda x: x != option, categories), option, 'Comix',
+                      filter(lambda x: x != option, categories), option, 'Comix', fav,
                       'https://www.goodreads.com/shelf/show/comics', rank)
 
 @app.route("/manga", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
@@ -51,7 +52,7 @@ def manga(rank="average(highest)"):
     option = ('manga', 'manga')
     fav = "https://github.com/spswatron/files-for-comix-match/raw/master/apple-touch-icon-M.png"
     return super_page(request, 'data/manga.xlsx', "/manga",
-                      filter(lambda x: x != option, categories), option, 'Manga',
+                      filter(lambda x: x != option, categories), option, 'Manga', fav,
                       'https://www.goodreads.com/shelf/show/mang%C3%A1', rank)
 
 @app.route("/chicklit", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
@@ -84,7 +85,6 @@ def teenRomance(rank="average(highest)"):
 @app.route("/young-adult", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
 @app.route("/young-adult/<rank>", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
 def YA(rank="average(highest)"):
-    print(rank)
     option = ('YA', 'young adult')
     fav = "https://github.com/spswatron/files-for-comix-match/raw/master/apple-touch-icon-y.png"
     return super_page(request, 'data/young-adult.xlsx', "/young-adult",
@@ -94,7 +94,6 @@ def YA(rank="average(highest)"):
 @app.route("/graphic-novels", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
 @app.route("/graphic-novels/<rank>", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
 def GN(rank="average(highest)"):
-    print(rank)
     option = ('GN', 'graphic novels')
     fav = "https://github.com/spswatron/files-for-comix-match/raw/master/apple-touch-icon-g.png"
     return super_page(request, 'data/graphic-novels.xlsx', "/graphic-novels",
