@@ -99,7 +99,7 @@ def GN(rank="average(highest)"):
     option = ('GN', 'graphic novels')
     fav = "https://github.com/spswatron/files-for-comix-match/raw/master/apple-touch-icon-g.png"
     return super_page(request, 'data/graphic-novels.xlsx', "/graphic-novels",
-                      filter(lambda x: x != option, categories), option, 'Graphics', fav,
+                      filter(lambda x: x != option, categories), option, 'Graphix', fav,
                       'https://www.goodreads.com/shelf/show/graphic-novels', rank)
 
 @app.route("/redirect/<rank>", strict_slashes=False, methods = ['POST'])
