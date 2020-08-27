@@ -27,21 +27,23 @@ def super_page(request, file, loc, cat, choice, name, fav, shelf, rank = "averag
         helper = request.form['sortBy']
         new_list = fixed(sorting, helper)
         return render_template('index.html', books=tupleFeeder(file, helper), loc=loc,
-                               categories=cat, choice=choice, sort=new_list,
-                               style=helper, favicon=fav, name=name, time = last_update,
-                               shelf=shelf, file=info_source)
-    else:
-        print(shelf)
-        return render_template('index.html', books=tupleFeeder(file, rank), loc = loc,
-                               categories=cat, choice=choice, sort=fixed(sorting, rank),
-                               style=rank, favicon=fav, name=name, time = last_update,
-                               shelf=shelf, file=info_source)
+                                categories=cat, choice=choice, sort=new_list,
+                                style=helper, favicon=fav, name=name, time = last_update,
+                                shelf=shelf, file=info_source)
+    return render_template('index.html', books=tupleFeeder(file, rank), loc = loc,
+                            categories=cat, choice=choice, sort=fixed(sorting, rank),
+                            style=rank, favicon=fav, name=name, time = last_update,
+                            shelf=shelf, file=info_source)
 
 @app.route("/", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
 @app.route("/<rank>", strict_slashes=False, methods=['GET', 'POST', 'PUT'])
 def home(rank="average(highest)"):
     option = ('home', 'comics')
     fav = "https://github.com/spswatron/files-for-comix-match/raw/master/apple-touch-icon.png"
+    if(not(rank in categories)):
+        return super_page(request, 'data/comics.xlsx', "/",
+                      filter(lambda x: x != option, categories), option, 'Comix', fav,
+                      'https://www.goodreads.com/shelf/show/comics', "average(highest)")
     return super_page(request, 'data/comics.xlsx', "/",
                       filter(lambda x: x != option, categories), option, 'Comix', fav,
                       'https://www.goodreads.com/shelf/show/comics', rank)
