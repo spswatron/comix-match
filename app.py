@@ -26,11 +26,11 @@ def super_page(request, file, loc, cat, choice, name, fav, shelf, rank = "averag
     if request.method == 'POST':
         helper = request.form['sortBy']
         new_list = fixed(sorting, helper)
-        return render_template('index.html', books=tupleFeeder(file, helper), loc=loc,
+        return render_template("index.html", books=tupleFeeder(file, helper), loc=loc,
                                 categories=cat, choice=choice, sort=new_list,
                                 style=helper, favicon=fav, name=name, time = last_update,
                                 shelf=shelf, file=info_source)
-    return render_template('index.html', books=tupleFeeder(file, rank), loc = loc,
+    return render_template("index.html", books=tupleFeeder(file, rank), loc = loc,
                             categories=cat, choice=choice, sort=fixed(sorting, rank),
                             style=rank, favicon=fav, name=name, time = last_update,
                             shelf=shelf, file=info_source)

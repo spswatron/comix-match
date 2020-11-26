@@ -27,26 +27,27 @@
         </form>
         <br>
         <table align="center">
-            <tbody>
-                <tr>
-                    <th ></th>
-                    <th></th>
-                    <th class = "titleOG">Title</th>
-                    <th class = "numbers">Avg</th>
-                    <th class = "numbers">Reviews</th>
-                    <th class = "numbers">Published</th>
-                </tr>
-                {% for book in books %}
-                <tr>
-                    <th class="height"> {{ book[0] }} </th>
-                    <td><a href={{ book[7] }}><img src={{ book[6] }} alt={{ book[0] }}></a></td>
-                    <td  class = "title"><a href={{ book[7] }} target="_blank">{{ book[2] }}</a></td>
-                    <td class = "numbers"> {{ book[3] }} </td>
-                    <td class = "numbers"> {{ book[4] }} </td>
-                    <td class = "numbers"> {{ book[5] }} </td>
-                </tr>
-                {% endfor %}
-            </tbody>
+        <tr class ="headers">
+            <th></th>
+            <th></th>
+            <th class = "titleOG">Title</th>
+            <th class = "numbers">Avg</th>
+            <th class = "numbers">Reviews</th>
+            <th class = "numbers">Published</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <th class="height"> {{ book[0] }} </th>
+            <td><a href={{ book[7] }}><img src={{ book[6] }} alt={{ book[0] }}></a></td>
+            <td  class = "title"><a href={{ book[7] }} target="_blank">{{ book[2] }}</a></td>
+        </tr>
+            <td class = "numbers"> {{ book[3] }} </td>
+            <td class = "numbers"> {{ book[4] }} </td>
+            <td class = "numbers"> {{ book[5] }} </td>
+        <tr>
+
+        </tr>
+        {% endfor %}
     </table>
 <br>
 </div>
